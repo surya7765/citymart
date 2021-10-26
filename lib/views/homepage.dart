@@ -1,3 +1,5 @@
+
+import 'package:citymart/views/homepage_body.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
@@ -61,6 +63,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -102,6 +106,12 @@ class _HomePageState extends State<HomePage> {
                 child: Icon(Icons.search_rounded),
               ),
             )
+          ],
+        ),
+        body: TabBarView(
+          children: [
+            Body(),
+            Text("data"),
           ],
         ),
       ),

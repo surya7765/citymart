@@ -46,7 +46,6 @@ _initScanbotSdk() async {
           true, // Consider disabling logging in production builds for security and performance reasons.
       storageBaseDirectory:
           "${storageDirectory?.path}/custom-barcode-sdk-storage");
-
   try {
     await ScanbotBarcodeSdk.initScanbotSdk(config);
   } catch (e) {

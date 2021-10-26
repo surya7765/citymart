@@ -21,8 +21,13 @@ class BarcodeItemWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(item.text ?? "",
-                style: TextStyle(inherit: true, color: Colors.black)),
+            child: Text(
+              item.text ?? "",
+              style: TextStyle(
+                inherit: true,
+                color: Colors.black,
+              ),
+            ),
           ),
         ],
       ),

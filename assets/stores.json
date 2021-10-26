@@ -1,0 +1,144 @@
+{
+	"shoplist" : [
+		{
+			"shopname": "Shree guna",
+			"productdetails": [
+				{
+					"productName": "Colgate toothpaste",
+					"productDesc": "Helloworld",
+					"price": 30,
+					"image":["https://m.media-amazon.com/images/I/61xD1+TYC1L._SY450_.jpg","https://5.imimg.com/data5/HB/HH/MY-46495127/colgate-toothpaste-500x500.jpg","https://5.imimg.com/data5/SELLER/Default/2020/12/PO/TA/DG/90516629/colgate-toothpaste-500x500.jpg"],
+					"quantity": "50 gm",
+					"availability": true,
+					"ratings": 4.5,
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
+					"alternativeName":[
+						"toothpaste"
+					]
+				},
+				{
+					"productName": "Surf excel soap",
+					"productDesc": "Helloworld",
+					"price": 10,
+					"image":["https://nearshop.in/wp-content/uploads/2020/08/1593588883105_1593588875943-11.png","https://jstclick.com/image/cache/1234/dove/surf%20excel-800x800.jpg","http://www.kirana.store/image/cache/catalog/SURFEXCEL%2010RS%20SOAP/download-500x500.jpg"],
+					"quantity": "10 gm",
+					"availability": true,
+					"ratings": 4.0,
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
+					"alternativeName":[
+						"Cloth washing soap"
+					]
+				},
+				{
+					"productName": "Dettol handwash",
+					"productDesc": "Kill the germs",
+					"price": 10,
+					"image":["https://m.media-amazon.com/images/I/61cLdOwnWZS._SL1000_.jpg","https://m.media-amazon.com/images/I/51MHrlRbc+S._SX679_.jpg","https://newassets.apollo247.com/pub/media/catalog/product/d/e/det0200.jpg"],
+					"quantity":"120 ml",
+					"availability": true,
+					"ratings": 5.0,
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
+					"alternativeName":[
+						"handwash"
+					]
+				},
+				{
+					"productName": "Saffola Masala Oats",
+					"productDesc": "health and taste togeteher ",
+					"price": 68,
+					"images":["https://m.media-amazon.com/images/I/71V7ii2sXKL._SL1500_.jpg","https://m.media-amazon.com/images/I/810Q1fj8zsL._SL1500_.jpg","https://m.media-amazon.com/images/I/810Q1fj8zsL._SL1500_.jpg"],
+					"quantity": "500 gm",
+					"availability": true,
+					"ratings": 4.6,
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
+					"alternativeName":[
+						"Oats"
+					]
+				},
+				{
+					"productName": "Nivea face cream",
+					"productDesc": "Soft skin gauranteed",
+					"price": 45,
+					"images":["https://img.makeupalley.com/1/1/8/1/3571333.JPG","https://grocered.in/images/product/2000/2732-l.jpg","https://grocered.in/images/product/2000/2732-l.jpg"],
+					"quantity":"192 gm",
+					"availability": true,
+					"ratings": 4.7,
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
+					"alternativeName":[
+						"face cream"
+					]
+				}
+			]
+		},
+		{
+			"name": "Suganya store",
+			"productdetails": [
+				{
+					"productName": "Basmati Rice",
+					"productDesc": "Long Grain Delicious Rice for Biryani ",
+					"price": 300,
+					"image":["https://5.imimg.com/data5/BI/UV/WK/SELLER-2413462/daawat-rozana-basmati-rice-500x500.jpg","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/k/r/q/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpvmmx9r96r.jpeg?q=70","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/4/v/l/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpva4yfem8j.jpeg?q=70"],
+					"quantity": "5 kg",
+					"availability": true,
+					"ratings": 4.5,
+					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"alternativeName":[
+						"Rice"
+					]
+				},
+				{
+					"productName": "Neu. Farm Almonds",
+					"productDesc": "Neu.Farm California Almonds contain lots of healthy fats, fiber, protein, magnesium and vitamin E.",
+					"price": 399,
+					"image":["https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-product-images-orvshdaaikx-p590805443-0-202109271423.jpg","https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-legal-images-orvshdaaikx-p590805443-1-202109271424.jpg"],
+					"quantity": "500 gm",
+					"availability": true,
+					"ratings": 4.0,
+					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"alternativeName":[
+						"Almonds"
+					]
+				},
+				{
+					"productName": "Apple Shimla Small",
+					"productDesc": "Apples are rich in fiber, potassium, vitamin c, vitamin k and carbs. It can be eaten as a snack",
+					"price": 109,
+					"image":["https://www.jiomart.com/images/product/420x420/590067369/apple-shimla-small-1-kg-0-20201029.jpg"],
+					"quantity":" 1 kg",
+					"availability": true,
+					"ratings": 4.8,
+					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"alternativeName":[
+						"Apples"
+					]
+				},
+				{
+					"productName": "Socks pair",
+					"productDesc": "Pack of 3 Patterned Socks",
+					"price": 99,
+					"images":["https://www.jiomart.com/images/product/600x750/441179756_multi/pack-of-3-socks-model-441179756_multi-0-202110072027.jpg","https://www.jiomart.com/images/product/600x750/441179760_multi/pack-of-3-socks-model-441179760_multi-0-202109271719.jpg"],
+					"quantity": 3,
+					"availability": true,
+					"ratings": 3.9,
+					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"alternativeName":[
+						"Socks"
+					]
+				},
+				{
+					"productName": "Aashirvaad Whole Wheat Atta 10 kg",
+					"productDesc": "Made of nutritious wheat grains. Also, it has a sweet taste that gives you fuller and softer rotis, every single time.",
+					"price": 417,
+					"images":["https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-0-20210604.jpg","https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-1-20210604.jpg"],
+					"quantity":"10 kg",
+					"availability": true,
+					"ratings": 4.7,
+					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"alternativeName":[
+						"wheat flour","atta"
+					]
+				}
+			]
+		}
+	]
+}
