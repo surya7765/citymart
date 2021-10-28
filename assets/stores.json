@@ -7,7 +7,7 @@
 					"productName": "Colgate toothpaste",
 					"productDesc": "Helloworld",
 					"price": 30,
-					"image":["https://m.media-amazon.com/images/I/61xD1+TYC1L._SY450_.jpg","https://5.imimg.com/data5/HB/HH/MY-46495127/colgate-toothpaste-500x500.jpg","https://5.imimg.com/data5/SELLER/Default/2020/12/PO/TA/DG/90516629/colgate-toothpaste-500x500.jpg"],
+					"images":["https://m.media-amazon.com/images/I/61xD1+TYC1L._SY450_.jpg","https://5.imimg.com/data5/HB/HH/MY-46495127/colgate-toothpaste-500x500.jpg","https://5.imimg.com/data5/SELLER/Default/2020/12/PO/TA/DG/90516629/colgate-toothpaste-500x500.jpg"],
 					"quantity": "50 gm",
 					"availability": true,
 					"ratings": 4.5,
@@ -20,7 +20,7 @@
 					"productName": "Surf excel soap",
 					"productDesc": "Helloworld",
 					"price": 10,
-					"image":["https://nearshop.in/wp-content/uploads/2020/08/1593588883105_1593588875943-11.png","https://jstclick.com/image/cache/1234/dove/surf%20excel-800x800.jpg","http://www.kirana.store/image/cache/catalog/SURFEXCEL%2010RS%20SOAP/download-500x500.jpg"],
+					"images":["https://nearshop.in/wp-content/uploads/2020/08/1593588883105_1593588875943-11.png","https://jstclick.com/image/cache/1234/dove/surf%20excel-800x800.jpg","http://www.kirana.store/image/cache/catalog/SURFEXCEL%2010RS%20SOAP/download-500x500.jpg"],
 					"quantity": "10 gm",
 					"availability": true,
 					"ratings": 4.0,
@@ -33,7 +33,7 @@
 					"productName": "Dettol handwash",
 					"productDesc": "Kill the germs",
 					"price": 10,
-					"image":["https://m.media-amazon.com/images/I/61cLdOwnWZS._SL1000_.jpg","https://m.media-amazon.com/images/I/51MHrlRbc+S._SX679_.jpg","https://newassets.apollo247.com/pub/media/catalog/product/d/e/det0200.jpg"],
+					"images":["https://m.media-amazon.com/images/I/61cLdOwnWZS._SL1000_.jpg","https://m.media-amazon.com/images/I/51MHrlRbc+S._SX679_.jpg","https://newassets.apollo247.com/pub/media/catalog/product/d/e/det0200.jpg"],
 					"quantity":"120 ml",
 					"availability": true,
 					"ratings": 5.0,
@@ -71,17 +71,17 @@
 			]
 		},
 		{
-			"name": "Suganya store",
+			"shopname": "Suganya store",
 			"productdetails": [
 				{
 					"productName": "Basmati Rice",
 					"productDesc": "Long Grain Delicious Rice for Biryani ",
 					"price": 300,
-					"image":["https://5.imimg.com/data5/BI/UV/WK/SELLER-2413462/daawat-rozana-basmati-rice-500x500.jpg","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/k/r/q/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpvmmx9r96r.jpeg?q=70","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/4/v/l/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpva4yfem8j.jpeg?q=70"],
+					"images":["https://5.imimg.com/data5/BI/UV/WK/SELLER-2413462/daawat-rozana-basmati-rice-500x500.jpg","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/k/r/q/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpvmmx9r96r.jpeg?q=70","https://rukminim1.flixcart.com/image/416/416/kthjy4w0/rice/4/v/l/white-super-na-basmati-rice-bag-daawat-long-grain-original-imag6tpva4yfem8j.jpeg?q=70"],
 					"quantity": "5 kg",
-					"availability": true,
+					"availability": false,
 					"ratings": 4.5,
-					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
 					"alternativeName":[
 						"Rice"
 					]
@@ -90,7 +90,7 @@
 					"productName": "Neu. Farm Almonds",
 					"productDesc": "Neu.Farm California Almonds contain lots of healthy fats, fiber, protein, magnesium and vitamin E.",
 					"price": 399,
-					"image":["https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-product-images-orvshdaaikx-p590805443-0-202109271423.jpg","https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-legal-images-orvshdaaikx-p590805443-1-202109271424.jpg"],
+					"images":["https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-product-images-orvshdaaikx-p590805443-0-202109271423.jpg","https://www.jiomart.com/images/product/420x420/rvshdaaikx/neu-farm-premium-quality-100-natural-california-almonds-500g-legal-images-orvshdaaikx-p590805443-1-202109271424.jpg","https://m.media-amazon.com/images/I/419CKiQyvuL._SX425_.jpg"],
 					"quantity": "500 gm",
 					"availability": true,
 					"ratings": 4.0,
@@ -103,7 +103,7 @@
 					"productName": "Apple Shimla Small",
 					"productDesc": "Apples are rich in fiber, potassium, vitamin c, vitamin k and carbs. It can be eaten as a snack",
 					"price": 109,
-					"image":["https://www.jiomart.com/images/product/420x420/590067369/apple-shimla-small-1-kg-0-20201029.jpg"],
+					"images":["https://www.jiomart.com/images/product/420x420/590067369/apple-shimla-small-1-kg-0-20201029.jpg","https://www.bigbasket.com/media/uploads/p/l/40033819-2_6-fresho-apple-shimla.jpg","http://freshbaskit.com/public/images/media/2021/08/large1627994866CEp7D03206.jpg"],
 					"quantity":" 1 kg",
 					"availability": true,
 					"ratings": 4.8,
@@ -116,11 +116,11 @@
 					"productName": "Socks pair",
 					"productDesc": "Pack of 3 Patterned Socks",
 					"price": 99,
-					"images":["https://www.jiomart.com/images/product/600x750/441179756_multi/pack-of-3-socks-model-441179756_multi-0-202110072027.jpg","https://www.jiomart.com/images/product/600x750/441179760_multi/pack-of-3-socks-model-441179760_multi-0-202109271719.jpg"],
+					"images":["https://www.jiomart.com/images/product/600x750/441179756_multi/pack-of-3-socks-model-441179756_multi-0-202110072027.jpg","https://www.jiomart.com/images/product/600x750/441179760_multi/pack-of-3-socks-model-441179760_multi-0-202109271719.jpg","https://cdn.shopclues.com/images/thumbnails/48678/320/320/Nike3PpkDriFitLightweightQuarterHO15RunningSocksGreyHeatherWhiteQ415SX4847901014807791061480779221.jpg"],
 					"quantity": 3,
 					"availability": true,
 					"ratings": 3.9,
-					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
+					"address": "Prince Hostel, No 66 murugan nagar Veltect, New Vellanur, Tamil Nadu 600062",
 					"alternativeName":[
 						"Socks"
 					]
@@ -129,9 +129,9 @@
 					"productName": "Aashirvaad Whole Wheat Atta 10 kg",
 					"productDesc": "Made of nutritious wheat grains. Also, it has a sweet taste that gives you fuller and softer rotis, every single time.",
 					"price": 417,
-					"images":["https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-0-20210604.jpg","https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-1-20210604.jpg"],
+					"images":["https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-0-20210604.jpg","https://www.jiomart.com/images/product/420x420/490000041/aashirvaad-whole-wheat-atta-10-kg-1-20210604.jpg","https://www.bigbasket.com/media/uploads/p/xxl/126906-6_6-aashirvaad-atta-whole-wheat.jpg"],
 					"quantity":"10 kg",
-					"availability": true,
+					"availability": false,
 					"ratings": 4.7,
 					"address": "near kv CRPF, Avadi, Tamil Nadu 600055",
 					"alternativeName":[

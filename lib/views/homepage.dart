@@ -1,4 +1,6 @@
-
+import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:citymart/src/blocs/application_bloc.dart';
+import 'package:citymart/src/screens/home_screen.dart';
 import 'package:citymart/views/homepage_body.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -63,8 +65,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
-
+  TextEditingController textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -79,12 +80,20 @@ class _HomePageState extends State<HomePage> {
             },
             child: Icon(Icons.my_location_rounded),
           ),
-          title: Text(
-            _currentAddress,
-            style: TextStyle(
-              fontSize: 14,
+          title: GestureDetector(
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              )
+            },
+            child: Text(
+              _currentAddress,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
           centerTitle: true,
           bottom: TabBar(
@@ -101,9 +110,19 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: GestureDetector(
-                child: Icon(Icons.search_rounded),
+              padding: const EdgeInsets.only(right: 8),
+              child: AnimSearchBar(
+                color: Colors.black54,
+                style: TextStyle(color: Colors.white),
+                width: 350,
+                textController: textController,
+                onSuffixTap: () {
+                  setState(
+                    () {
+                      textController.clear();
+                    },
+                  );
+                },
               ),
             )
           ],

@@ -25,7 +25,7 @@ class BarcodeItemWidget extends StatelessWidget {
               item.text ?? "",
               style: TextStyle(
                 inherit: true,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ),

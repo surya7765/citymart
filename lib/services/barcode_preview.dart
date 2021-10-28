@@ -28,34 +28,35 @@ class BarcodesResultPreviewWidget extends StatelessWidget {
       previewView = Container();
     }
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(),
-          leading: GestureDetector(
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+      appBar: AppBar(
+        iconTheme: IconThemeData(),
+        leading: GestureDetector(
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
           ),
-          backgroundColor: Colors.white,
-          title: const Text('Scanned barcodes',
-              style: TextStyle(inherit: true, color: Colors.black)),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
         ),
-        body: Column(
-          children: <Widget>[
-            previewView,
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, position) {
-                  return BarcodeItemWidget(preview.barcodeItems[position]);
-                },
-                itemCount: preview.barcodeItems.length,
-              ),
+        backgroundColor: Colors.white,
+        title: const Text('Scanned barcodes',
+            style: TextStyle(inherit: true, color: Colors.black)),
+      ),
+      body: Column(
+        children: <Widget>[
+          previewView,
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, position) {
+                return BarcodeItemWidget(preview.barcodeItems[position]);
+              },
+              itemCount: preview.barcodeItems.length,
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
 
