@@ -78,10 +78,52 @@ class _SellerPageState extends State<SellerPage> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Sell your product",
+          "Hello Seller",
           style: TextStyle(
             fontSize: 16,
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              elevation: 7,
+              color: Colors.amber,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.person),
+                    SizedBox(width: 7.0),
+                    Text("My Profile"),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 5),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              elevation: 7,
+              color: Colors.cyan,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.menu_book),
+                    SizedBox(width: 7.0),
+                    Text("My Product list"),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -130,5 +172,4 @@ class _SellerPageState extends State<SellerPage> {
       print(e);
     }
   }
-
 }
