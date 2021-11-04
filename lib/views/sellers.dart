@@ -95,6 +95,7 @@ class _SellerPageState extends State<SellerPage> {
     // if (!await checkLicenseStatus(context)) {
     //   return;
     // }
+    // ignore: unused_local_variable
     final additionalParameters = BarcodeAdditionalParameters(
       enableGS1Decoding: false,
       minimumTextLength: 10,
@@ -130,5 +131,4 @@ class _SellerPageState extends State<SellerPage> {
       print(e);
     }
   }
-
 }

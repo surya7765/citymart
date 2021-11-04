@@ -12,7 +12,6 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   List _items = [];
-  List _items1 = [];
 
   Future<void> readJson() async {
     final String response =
@@ -24,61 +23,68 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    readJson();
-    return Container(
-      // height: 200,
-      child: GridView.builder(
-        itemCount: _items.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
-            child: GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        ProductDetails(item: _items, index: index)),
-              ),
-              child: Container(
-                child: Column(
-                  children: [
-                    Hero(
-                      transitionOnUserGestures: true,
-                      tag: index,
-                      child: Container(
-                        height: 130,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(_items[index]["images"][0]),
-                            fit: BoxFit.contain,
+    return RefreshIndicator(
+      onRefresh: () async {
+        await Future.delayed(Duration(seconds: 1));
+        setState(() {
+          readJson();
+        });
+      },
+      child: Container(
+        // height: 200,
+        child: GridView.builder(
+          itemCount: _items.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ProductDetails(item: _items, index: index)),
+                ),
+                child: Container(
+                  child: Column(
+                    children: [
+                      Hero(
+                        transitionOnUserGestures: true,
+                        tag: index,
+                        child: Container(
+                          height: 130,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(_items[index]["images"][0]),
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Text(
-                      _items[index]["productName"],
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25),
-                      child: Row(
-                        children: [
-                          Text("\t" + _items[index]["quantity"].toString()),
-                          Text("\t : \t Rs. " +
-                              _items[index]["price"].toString()),
-                        ],
+                      Text(
+                        _items[index]["productName"],
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Row(
+                          children: [
+                            Text("\t" + _items[index]["quantity"].toString()),
+                            Text("\t : \t Rs. " +
+                                _items[index]["price"].toString()),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
