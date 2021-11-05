@@ -5,6 +5,7 @@ import 'package:barcode_scanner/common_data.dart';
 import 'package:barcode_scanner/scanbot_barcode_sdk.dart';
 import 'package:barcode_scanner/scanbot_sdk_models.dart';
 import 'package:citymart/models/barcode_model.dart';
+import 'package:citymart/models/seller_profile.dart';
 import 'package:citymart/services/barcode_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -71,6 +72,15 @@ class _SellerPageState extends State<SellerPage> {
 
   BarcodeFormatsRepository barcodeFormatsRepository =
       BarcodeFormatsRepository();
+
+  final List<SellerProfile> sellerProfiles = [
+    SellerProfile(
+      card_name: "Seller 1",
+      color: Colors.red,
+      icon: Icons.account_balance,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,45 +95,26 @@ class _SellerPageState extends State<SellerPage> {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Card(
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              elevation: 7,
-              color: Colors.amber,
+              color: sellerProfiles[index].color,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    Icon(Icons.person),
+                    Icon(sellerProfiles[index].icon),
                     SizedBox(width: 7.0),
-                    Text("My Profile"),
+                    Text(sellerProfiles[index].card_name),
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 5),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              elevation: 7,
-              color: Colors.cyan,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.menu_book),
-                    SizedBox(width: 7.0),
-                    Text("My Product list"),
-                  ],
-                ),
-              ),
-            ),
-          ],
+            );
+          },
+          itemCount: sellerProfiles.length,
         ),
       ),
       floatingActionButton: FloatingActionButton(
