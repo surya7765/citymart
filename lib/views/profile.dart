@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
       list_icon: Icons.location_on,
     ),
     UserProfileList(
-      list_item: 'Logout',
+      list_item: 'Register',
       list_icon: Icons.exit_to_app,
     ),
   ];
@@ -42,11 +42,6 @@ class _ProfilePageState extends State<ProfilePage> {
             return ListTile(
               leading: Icon(_userProfileList[index].list_icon),
               title: Text(_userProfileList[index].list_item),
-              onTap: () {
-                if (_userProfileList[index].list_item == 'Logout') {
-                  Navigator.pushNamed(context, '/login');
-                }
-              },
             );
           },
           itemCount: _userProfileList.length,
