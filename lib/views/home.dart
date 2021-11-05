@@ -1,7 +1,9 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:citymart/views/homepage.dart';
 import 'package:citymart/views/profile.dart';
+import 'package:citymart/views/seller_login.dart';
 import 'package:citymart/views/sellers.dart';
+import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
   int _currentIndex = 0;
   late PageController _pageController;
 
@@ -60,7 +61,7 @@ class _HomeState extends State<Home> {
             Container(
               color: Colors.red,
             ),
-            SellerPage(),
+            SignIn(),
             ProfilePage(),
           ],
         ),
