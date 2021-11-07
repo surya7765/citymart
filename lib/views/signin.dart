@@ -1,3 +1,5 @@
+import 'package:citymart/services/auth.dart';
+import 'package:citymart/views/sellers.dart';
 import 'package:citymart/views/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -10,25 +12,26 @@ class _SignInState extends State<SignIn> {
   final _formkey = GlobalKey<FormState>();
   late String email, password;
 
-  // AuthServices authServices = AuthServices();
+  AuthServices authServices = AuthServices();
 
   bool _isLoading = false;
 
-  //   if (_formkey.currentState.validate()) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     await authServices.signIn(email, password).then((value) {
-  //       if (value != null) {
-  //         setState(() {
-  //           _isLoading = false;
-  //         });
-  //         Navigator.pushReplacement(
-  //             context, MaterialPageRoute(builder: (context) => Home()));
-  //       }
-  //     });
-  //   }
-  // }
+  userLogin() async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      await authServices.signIn(email, password).then((value) {
+        if (value != null) {
+          setState(() {
+            _isLoading = false;
+          });
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => SellerPage()));
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +59,7 @@ class _SignInState extends State<SignIn> {
                       Spacer(),
                       TextFormField(
                         validator: (val) {
-                          return val!.isEmpty ? "Enter Mobile number" : null;
+                          return val!.isEmpty ? "Enter Email" : null;
                         },
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -72,11 +75,11 @@ class _SignInState extends State<SignIn> {
                               Radius.circular(8.0),
                             ),
                           ),
-                          hintText: "+919442786451",
+                          hintText: "example@gmail.com",
                           hintStyle: TextStyle(
                             color: Colors.blueGrey,
                           ),
-                          labelText: "Mobile Number",
+                          labelText: "Email",
                           labelStyle: TextStyle(
                             color: Colors.deepPurple,
                             fontSize: 18.0,
@@ -126,7 +129,7 @@ class _SignInState extends State<SignIn> {
                         height: 20.0,
                       ),
                       GestureDetector(
-                        onTap: () => {},
+                        onTap: () => userLogin(),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.blue,

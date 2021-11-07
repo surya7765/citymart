@@ -1,3 +1,4 @@
+import 'package:citymart/services/auth.dart';
 import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
 
@@ -12,24 +13,28 @@ class _SignUpState extends State<SignUp> {
 
   bool _isLoading = false;
 
-  // AuthServices authServices = AuthServices();
+  AuthServices authServices = AuthServices();
 
-  // userSignUp() async {
-  //   if (_formkey.currentState.validate()) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     await authServices.register(email, password).then((value) {
-  //       if (value != null) {
-  //         setState(() {
-  //           _isLoading = false;
-  //         });
-  //         Navigator.pushReplacement(
-  //             context, MaterialPageRoute(builder: (context) => Home()));
-  //       }
-  //     });
-  //   }
-  // }
+  userSignUp() async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      await authServices.register(email, password).then((value) {
+        if (value != null) {
+          setState(() {
+            _isLoading = false;
+          });
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SignIn(),
+            ),
+          );
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +167,7 @@ class _SignUpState extends State<SignUp> {
                         height: 20.0,
                       ),
                       GestureDetector(
-                        onTap: () => {},
+                        onTap: () => userSignUp(),
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.blue,

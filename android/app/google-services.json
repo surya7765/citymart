@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "681848694972",
+    "project_id": "citymart-330316",
+    "storage_bucket": "citymart-330316.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681848694972:android:329aea67eb2f09f0f408b9",
+        "android_client_info": {
+          "package_name": "com.example.citymart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681848694972-b9uuo2kgfmooam782rnkhju33q3djs1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAO-8zLVru781pnNY87uKIeJkcO3xHu3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681848694972-b9uuo2kgfmooam782rnkhju33q3djs1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
