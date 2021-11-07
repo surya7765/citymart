@@ -1,14 +1,17 @@
 import 'dart:io';
 import 'dart:math';
+
 import 'package:barcode_scanner/barcode_scanning_data.dart';
 import 'package:barcode_scanner/common_data.dart';
 import 'package:barcode_scanner/scanbot_barcode_sdk.dart';
 import 'package:barcode_scanner/scanbot_sdk_models.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:path_provider/path_provider.dart';
+
 import 'package:citymart/models/barcode_model.dart';
 import 'package:citymart/models/seller_profile.dart';
 import 'package:citymart/services/barcode_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 bool shouldInitWithEncryption = false;
 
@@ -81,6 +84,8 @@ class _SellerPageState extends State<SellerPage> {
     ),
   ];
 
+  var isDialOpen = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,9 +122,31 @@ class _SellerPageState extends State<SellerPage> {
           itemCount: sellerProfiles.length,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => startBarcodeScanner(),
-        child: Icon(Icons.add_shopping_cart),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        animatedIconTheme: IconThemeData(size: 22.0),
+        child: Text("open"),
+        activeChild: Text("close"),
+        icon: Icons.add,
+        activeIcon: Icons.close,
+        spacing: 3,
+        openCloseDial: isDialOpen,
+        childPadding: const EdgeInsets.all(5),
+        spaceBetweenChildren: 4,
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.camera_alt),
+            backgroundColor: Colors.red,
+            label: "Scan",
+            onTap: () => startBarcodeScanner(),
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.add),
+            backgroundColor: Colors.red,
+            label: "Add",
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }
