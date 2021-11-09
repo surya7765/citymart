@@ -1,10 +1,12 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:citymart/views/homepage.dart';
 import 'package:citymart/views/profile.dart';
-import 'package:citymart/views/seller_login.dart';
 import 'package:citymart/views/sellers.dart';
 import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String finalemail = '';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,6 +29,16 @@ class _HomeState extends State<Home> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  Future getValidationdata() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    var obtainemail = sharedPreferences.getString('email');
+    setState(() {
+      finalemail = obtainemail!;
+    });
+    return finalemail;
   }
 
   @override
@@ -61,7 +73,7 @@ class _HomeState extends State<Home> {
             Container(
               color: Colors.red,
             ),
-            SignIn(),
+            finalemail.length <= 5 ? SignIn() : SellerPage(),
             ProfilePage(),
           ],
         ),

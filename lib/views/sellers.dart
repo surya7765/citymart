@@ -1,17 +1,20 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:barcode_scanner/barcode_scanning_data.dart';
 import 'package:barcode_scanner/common_data.dart';
 import 'package:barcode_scanner/scanbot_barcode_sdk.dart';
 import 'package:barcode_scanner/scanbot_sdk_models.dart';
+import 'package:citymart/services/add_product.dart';
+import 'package:citymart/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:citymart/models/barcode_model.dart';
 import 'package:citymart/models/seller_profile.dart';
 import 'package:citymart/services/barcode_preview.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool shouldInitWithEncryption = false;
 
@@ -98,6 +101,17 @@ class _SellerPageState extends State<SellerPage> {
             fontSize: 16,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout_rounded),
+            onPressed: () async {
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              prefs.remove('email');
+              Get.to(Home());
+            },
+          ),
+        ],
       ),
       body: Center(
         child: ListView.builder(
@@ -144,7 +158,7 @@ class _SellerPageState extends State<SellerPage> {
             child: Icon(Icons.add),
             backgroundColor: Colors.red,
             label: "Add",
-            onTap: () {},
+            onTap: () => Get.to(AddProduct()),
           ),
         ],
       ),

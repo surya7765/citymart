@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:citymart/services/auth.dart';
 import 'package:citymart/views/sellers.dart';
 import 'package:citymart/views/signup.dart';
-import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -11,6 +13,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formkey = GlobalKey<FormState>();
   late String email, password;
+
+  TextEditingController emailcontroller = TextEditingController();
 
   AuthServices authServices = AuthServices();
 
@@ -26,8 +30,7 @@ class _SignInState extends State<SignIn> {
           setState(() {
             _isLoading = false;
           });
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => SellerPage()));
+          Get.off(SellerPage());
         }
       });
     }
@@ -61,6 +64,7 @@ class _SignInState extends State<SignIn> {
                         validator: (val) {
                           return val!.isEmpty ? "Enter Email" : null;
                         },
+                        controller: emailcontroller,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
@@ -129,7 +133,12 @@ class _SignInState extends State<SignIn> {
                         height: 20.0,
                       ),
                       GestureDetector(
-                        onTap: () => userLogin(),
+                        onTap: () async {
+                          final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.setString('email', emailcontroller.text);
+                          userLogin();
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.blue,

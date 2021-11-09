@@ -1,6 +1,7 @@
 import 'package:citymart/services/auth.dart';
 import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -25,12 +26,7 @@ class _SignUpState extends State<SignUp> {
           setState(() {
             _isLoading = false;
           });
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SignIn(),
-            ),
-          );
+          Get.to(SignIn());
         }
       });
     }
