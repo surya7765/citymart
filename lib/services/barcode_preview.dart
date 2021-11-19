@@ -10,9 +10,9 @@ import 'package:barcode_scanner/scanbot_encryption_handler.dart';
 import '../main.dart';
 
 class BarcodesResultPreviewWidget extends StatelessWidget {
-  BarcodeScanningResult preview;
-
   BarcodesResultPreviewWidget(this.preview);
+
+  BarcodeScanningResult preview;
 
   @override
   Widget build(BuildContext context) {
@@ -61,34 +61,36 @@ class BarcodesResultPreviewWidget extends StatelessWidget {
 }
 
 class EncryptedPageWidget extends StatelessWidget {
-  final Uri path;
-
   EncryptedPageWidget(this.path);
+
+  final Uri path;
 
   @override
   Widget build(BuildContext context) {
     var imageData = ScanbotEncryptionHandler.getDecryptedDataFromFile(path);
     return Container(
-        height: 200,
-        width: double.infinity,
-        child: FutureBuilder(
-            future: imageData,
-            builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-              var data = snapshot.data;
-              if (data != null) {
-                Image image = Image.memory(data);
-                return Center(child: image);
-              } else {
-                return Container();
-              }
-            }));
+      height: 200,
+      width: double.infinity,
+      child: FutureBuilder(
+        future: imageData,
+        builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
+          var data = snapshot.data;
+          if (data != null) {
+            Image image = Image.memory(data);
+            return Center(child: image);
+          } else {
+            return Container();
+          }
+        },
+      ),
+    );
   }
 }
 
 class PageWidget extends StatelessWidget {
-  final Uri path;
-
   PageWidget(this.path);
+
+  final Uri path;
 
   @override
   Widget build(BuildContext context) {

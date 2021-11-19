@@ -20,6 +20,8 @@ class _SignInState extends State<SignIn> {
 
   bool _isLoading = false;
 
+  
+
   userLogin() async {
     if (_formkey.currentState!.validate()) {
       setState(() {
@@ -30,7 +32,8 @@ class _SignInState extends State<SignIn> {
           setState(() {
             _isLoading = false;
           });
-          Get.off(SellerPage());
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => SellerPage()));
         }
       });
     }
@@ -41,7 +44,6 @@ class _SignInState extends State<SignIn> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        // backgroundColor: Colors.grey,
         appBar: AppBar(
           title: Text("Login"),
           backgroundColor: Colors.grey,

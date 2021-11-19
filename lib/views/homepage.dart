@@ -1,7 +1,11 @@
 import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:citymart/models/product_model.dart';
 import 'package:citymart/src/blocs/application_bloc.dart';
 import 'package:citymart/src/screens/home_screen.dart';
 import 'package:citymart/views/homepage_body.dart';
+import 'package:citymart/views/refer_earn.dart';
+import 'package:citymart/views/searchpage.dart';
+import 'package:firestore_search/firestore_search.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
@@ -73,12 +77,12 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
+          leading: IconButton(
+            onPressed: () {
               hasNetwork();
               _determinePosition();
             },
-            child: Icon(Icons.my_location_rounded),
+            icon: Icon(Icons.my_location_rounded),
           ),
           title: GestureDetector(
             onTap: () => {
@@ -111,18 +115,16 @@ class _HomePageState extends State<HomePage> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 8),
-              child: AnimSearchBar(
-                color: Colors.black54,
-                style: TextStyle(color: Colors.white),
-                width: 350,
-                textController: textController,
-                onSuffixTap: () {
-                  setState(
-                    () {
-                      textController.clear();
-                    },
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReferEarn()),
                   );
                 },
+                icon: Icon(
+                  Icons.share_rounded,
+                ),
               ),
             )
           ],

@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:share/share.dart';
+
 
 class ProductDetails extends StatelessWidget {
-  final List item;
-  final int index;
-  const ProductDetails({Key? key, required this.item, required this.index})
-      : super(key: key);
+  final String productId;
+  final String productName;
+  final double price;
+  final String description;
+  final String images1;
+  final String images2;
+  final String images3;
+  final bool isAvailable;
+  final String quantity;
+  final double latitude;
+  final double longitude;
+  final String location;
+
+  const ProductDetails({
+    Key? key,
+    required this.productId,
+    required this.productName,
+    required this.price,
+    required this.description,
+    required this.images1,
+    required this.images2,
+    required this.images3,
+    required this.isAvailable,
+    required this.quantity,
+    required this.latitude,
+    required this.longitude,
+    required this.location,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(item[index]["productName"]),
+          title: Text(productName),
           elevation: 0,
         ),
         body: SingleChildScrollView(
@@ -23,7 +50,7 @@ class ProductDetails extends StatelessWidget {
                 ClipRRect(
                   child: Hero(
                     transitionOnUserGestures: true,
-                    tag: index,
+                    tag: productId,
                     child: ImageSlideshow(
                       width: double.infinity,
                       height: 400,
@@ -33,9 +60,9 @@ class ProductDetails extends StatelessWidget {
                       autoPlayInterval: 3000,
                       isLoop: true,
                       children: [
-                        Image.network(item[index]["images"][0]),
-                        Image.network(item[index]["images"][1]),
-                        Image.network(item[index]["images"][2]),
+                        Image.network(images1),
+                        Image.network(images2),
+                        Image.network(images3),
                       ],
                     ),
                   ),
@@ -46,7 +73,7 @@ class ProductDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Text(
-                    item[index]["productDesc"],
+                    description,
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -57,14 +84,14 @@ class ProductDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        "\t \t Rs. " + item[index]["price"].toString(),
+                        "\t \t Rs. " + price.toString(),
                         style: TextStyle(fontSize: 16),
                       ),
                       Text(
-                        "\t \t Rs. " + item[index]["quantity"].toString(),
+                        "\t \t " + quantity.toString(),
                         style: TextStyle(fontSize: 16),
                       ),
-                      item[index]["availability"]
+                      isAvailable
                           ? Text(
                               "Available",
                               style:
@@ -85,7 +112,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Text(item[index]["ratings"].toString()),
+                      // Text(.toString()),
                       SizedBox(
                         width: 6,
                       ),
@@ -100,7 +127,7 @@ class ProductDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 40, top: 10),
                   child: Container(
-                    child: Text(item[index]["address"]),
+                    child: Text(location),
                   ),
                 )
               ],

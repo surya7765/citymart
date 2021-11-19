@@ -27,13 +27,19 @@ class AuthServices {
       return _anonymousUser(user!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Fluttertoast.showToast(msg:"Password is too weak");
+        Fluttertoast.showToast(msg: "Password is too weak");
       } else if (e.code == 'email-already-in-use') {
         Fluttertoast.showToast(msg: "This account already exists");
       }
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  String? getCurrentUser() {
+    return _auth.currentUser != null
+        ? _auth.currentUser!.email.toString()
+        : null;
   }
 
   Future signOut() async {

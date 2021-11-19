@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:citymart/views/homepage.dart';
 import 'package:citymart/views/profile.dart';
+import 'package:citymart/views/searchpage.dart';
 import 'package:citymart/views/sellers.dart';
 import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +44,13 @@ class _HomeState extends State<Home> {
     return finalemail;
   }
 
+  Widget page = finalemail.isEmpty ? SignIn() : SearchPage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavyBar(
+        backgroundColor: Colors.white,
         selectedIndex: _currentIndex,
         onItemSelected: (index) {
           setState(() => _currentIndex = index);
@@ -53,9 +59,7 @@ class _HomeState extends State<Home> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
               title: Text('Home'), icon: Icon(Icons.home_outlined)),
-          BottomNavyBarItem(
-              title: Text('Chat'),
-              icon: Icon(Icons.chat_bubble_outline_rounded)),
+          BottomNavyBarItem(title: Text('Search'), icon: Icon(Icons.search)),
           BottomNavyBarItem(
               title: Text('Seller'), icon: Icon(Icons.shopping_bag_outlined)),
           BottomNavyBarItem(
@@ -66,14 +70,13 @@ class _HomeState extends State<Home> {
         child: PageView(
           controller: _pageController,
           onPageChanged: (index) {
+            print(index);
             setState(() => _currentIndex = index);
           },
           children: <Widget>[
             HomePage(),
-            Container(
-              color: Colors.red,
-            ),
-            finalemail.length <= 5 ? SignIn() : SellerPage(),
+            SearchPage(),
+            page,
             ProfilePage(),
           ],
         ),

@@ -1,7 +1,6 @@
 import 'package:citymart/views/product_details.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -11,81 +10,93 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List _items = [];
-
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/stores.json', cache: false);
-    final data = await json.decode(response);
-    // _items1 = data["shoplist"];
-    _items = data["shoplist"][1]["productdetails"];
-  }
-
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () async {
-        await Future.delayed(Duration(seconds: 1));
-        setState(() {
-          readJson();
-        });
-      },
-      child: Container(
-        // height: 200,
-        child: GridView.builder(
-          itemCount: _items.length,
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('products')
+          .orderBy('price')
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return GridView(
+          shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
+            childAspectRatio: 0.8,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
           ),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
-              child: GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ProductDetails(item: _items, index: index)),
-                ),
-                child: Container(
+          children: snapshot.data!.docs.map(
+            (document) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetails(
+                        productId: document.get('productId'),
+                        productName: document.get('productName'),
+                        price: document.get('price'),
+                        description: document.get('description'),
+                        images1: document.get('images')[0],
+                        images2: document.get('images')[1],
+                        images3: document.get('images')[2],
+                        isAvailable: document.get('isAvailable'),
+                        quantity: document.get('quantity'),
+                        latitude: document.get('latitude'),
+                        longitude: document.get('longitude'),
+                        location: document.get('location'),
+                      ),
+                    ),
+                  );
+                },
+                child: Card(
+                  elevation: 2,
                   child: Column(
-                    children: [
+                    children: <Widget>[
                       Hero(
                         transitionOnUserGestures: true,
-                        tag: index,
-                        child: Container(
-                          height: 130,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(_items[index]["images"][0]),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
+                        tag: document.id,
+                        child: Image.network(
+                          document.get('images')[0],
+                          fit: BoxFit.cover,
+                          height: 140,
+                          width: 150,
                         ),
                       ),
-                      Text(
-                        _items[index]["productName"],
-                        overflow: TextOverflow.ellipsis,
+                      SizedBox(
+                        height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: [
-                            Text("\t" + _items[index]["quantity"].toString()),
-                            Text("\t : \t Rs. " +
-                                _items[index]["price"].toString()),
-                          ],
+                      Text(
+                        document['productName'],
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '\u{20B9}${document['price']}',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            );
-          },
-        ),
-      ),
+              );
+            },
+          ).toList(),
+        );
+      },
     );
   }
 }
