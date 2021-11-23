@@ -8,6 +8,7 @@ class ProductModel {
   final String? images;
   final bool? isAvailable;
   final String? quantity;
+  final String? shopname;
   final double? latitude;
   final double? longitude;
   final String? location;
@@ -20,6 +21,7 @@ class ProductModel {
       this.images,
       this.isAvailable,
       this.quantity,
+      this.shopname,
       this.latitude,
       this.longitude,
       this.location});
@@ -37,6 +39,7 @@ class ProductModel {
         images: dataMap['images'][0],
         isAvailable: dataMap['isAvailable'],
         quantity: dataMap['quantity'],
+        shopname: dataMap['shopname'],
         latitude: dataMap['latitude'],
         longitude: dataMap['longitude'],
         location: dataMap['location'],

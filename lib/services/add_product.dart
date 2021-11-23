@@ -26,7 +26,7 @@ class _AddProductState extends State<AddProduct> {
   TextEditingController priceController = TextEditingController();
   TextEditingController productDescController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
-  TextEditingController ratingController = TextEditingController();
+  TextEditingController shopNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   ProductService productService = ProductService();
   final ImagePicker _picker = ImagePicker();
@@ -238,6 +238,19 @@ class _AddProductState extends State<AddProduct> {
                           },
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: TextFormField(
+                          controller: shopNameController,
+                          decoration:
+                              InputDecoration(hintText: "Shop Name"),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Enter your shop name please';
+                            }
+                          },
+                        ),
+                      ),
                       ListTile(
                         leading: Checkbox(
                           value: isChecked,
@@ -399,6 +412,7 @@ class _AddProductState extends State<AddProduct> {
             images: imageList,
             isAvailable: isChecked,
             quantity: quantityController.text,
+            shopname: shopNameController.text,
             latitude: _currentPosition.latitude,
             longitude: _currentPosition.longitude,
             location: _currentAddress,

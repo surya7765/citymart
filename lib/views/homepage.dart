@@ -4,7 +4,7 @@ import 'package:citymart/src/blocs/application_bloc.dart';
 import 'package:citymart/src/screens/home_screen.dart';
 import 'package:citymart/views/homepage_body.dart';
 import 'package:citymart/views/refer_earn.dart';
-import 'package:citymart/views/searchpage.dart';
+import 'package:citymart/services/searchpage.dart';
 import 'package:firestore_search/firestore_search.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

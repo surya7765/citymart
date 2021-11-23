@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:share/share.dart';
 
 
 class ProductDetails extends StatelessWidget {

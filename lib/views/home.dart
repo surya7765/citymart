@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:citymart/views/homepage.dart';
 import 'package:citymart/views/profile.dart';
-import 'package:citymart/views/searchpage.dart';
+import 'package:citymart/services/searchpage.dart';
 import 'package:citymart/views/sellers.dart';
 import 'package:citymart/views/signin.dart';
 import 'package:flutter/material.dart';
