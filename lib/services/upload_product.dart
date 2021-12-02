@@ -23,7 +23,6 @@ class ProductService {
   }) {
     var id = Uuid();
     String productId = id.v1();
-
     _firestore.collection(ref).doc(productId).set({
       'productId': productId,
       'productName': productName,
