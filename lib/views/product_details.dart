@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
-
 class ProductDetails extends StatelessWidget {
   final String productId;
   final String productName;
@@ -12,8 +11,7 @@ class ProductDetails extends StatelessWidget {
   final String images3;
   final bool isAvailable;
   final String quantity;
-  final double latitude;
-  final double longitude;
+  final double distance;
   final String location;
 
   const ProductDetails({
@@ -27,8 +25,7 @@ class ProductDetails extends StatelessWidget {
     required this.images3,
     required this.isAvailable,
     required this.quantity,
-    required this.latitude,
-    required this.longitude,
+    required this.distance,
     required this.location,
   }) : super(key: key);
 
@@ -109,15 +106,15 @@ class ProductDetails extends StatelessWidget {
                     top: 8,
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      // Text(.toString()),
-                      SizedBox(
-                        width: 6,
-                      ),
                       Icon(
                         Icons.star,
                         color: Colors.yellow,
                       ),
+                      Text(double.parse((distance).toStringAsFixed(2))
+                              .toString() +
+                          " km"),
                     ],
                   ),
                 ),

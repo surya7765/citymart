@@ -15,7 +15,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Position _currentPosition;
+  late Position _currentPosition = Position(
+    latitude: 0,
+    longitude: 0,
+    accuracy: 0,
+    altitude: 0,
+    speed: 0,
+    heading: 0,
+    speedAccuracy: 0,
+    timestamp: null,
+  );
   String _currentAddress = "Enabling Location...";
 
   void _determinePosition() async {
@@ -126,7 +135,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: TabBarView(
           children: [
-            Body(),
+            Body(
+                user_lat: _currentPosition.latitude,
+                user_long: _currentPosition.longitude),
             Text("data"),
           ],
         ),

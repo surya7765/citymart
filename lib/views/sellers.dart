@@ -18,20 +18,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 bool shouldInitWithEncryption = false;
 
-const BARCODE_SDK_LICENSE_KEY = "BsKmRY682Ao7xpjrD37v2VzxeXKZLD" +
-    "GO4iNx+5T5NfIBEqMueEpn5nooaRs6" +
-    "UT/3mSmMzVwTx9WsCqlmIkHVhhFHNL" +
-    "RHXRWd/u/tiGm4zNH89iQrmLUwbatq" +
-    "UMMGk5cMm5ccucz2y9dQ4ZwzjbX0Py" +
-    "UNP6QKuespmK28PYfVu1HH+vLizvgG" +
-    "aCv+f8HcyJ9GbbIO4Aks1iMS3NdX6I" +
-    "QboBvdnDOk1Ulhr87W+OW6rwUxSOoi" +
-    "DPHJGmpVw6tIyStuPSBHqByIn+HLxx" +
-    "5VRJMECKlA5E20ahStIOLwkWq6Cgcv" +
-    "rve1+ffCrD9nQ7WwJHcHZjqfN+ydKW" +
-    "Fh5vJqHKm5vA==\nU2NhbmJvdFNESw" +
-    "pjb20uZXhhbXBsZS5jaXR5bWFydAox" +
-    "NjM3NzExOTk5CjgzODg2MDcKMw==\n";
+const BARCODE_SDK_LICENSE_KEY = "f0ARHw5BLhTAFOcBGaVdNx26v1UAdA" +
+  "W6HVuWKoiHzBitwzWHH2yUZTRuQiEU" +
+  "CK2ORdBbfGXEYmGGuoK+P1yC57PeQc" +
+  "z2WxL3MrhoVRczl5IgPljRoOj87drQ" +
+  "ozNauQAdkVXJeBWmkpTMsWc4AH38PA" +
+  "DPVELLBI3x6Bk0VYl1YvNV0ZZfgLPJ" +
+  "FzE+hNqj3uvFRGb4Gc9jN1tuaXL5u8" +
+  "eIV6thA+3eAeTNw2iLIvkasTxaxnqW" +
+  "sbqyLwX0wk/pBLU5Rfd/VS9D4ennB1" +
+  "4zmZ+XN5BUjBG4PEKY1wJbT/nmMQlb" +
+  "niCQA8HJZzb8dfsA1wgnGShzOReJPL" +
+  "t/z2syBM5vaA==\nU2NhbmJvdFNESw" +
+  "pjb20uZXhhbXBsZS5jaXR5bWFydAox" +
+  "NjM5MzUzNTk5CjgzODg2MDcKMw==\n";
 
 _initScanbotSdk() async {
   Directory? storageDirectory;

@@ -4,19 +4,17 @@ import 'dart:math' as Math;
 import 'package:citymart/views/product_details.dart';
 
 class Body extends StatefulWidget {
-  // final double user_lat;
-  // final double user_long;
-  
-  const Body({Key? key}) : super(key: key);
+  final double user_lat;
+  final double user_long;
+
+  const Body({Key? key, required this.user_lat, required this.user_long})
+      : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  
-
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -55,8 +53,12 @@ class _BodyState extends State<Body> {
                         images3: document.get('images')[2],
                         isAvailable: document.get('isAvailable'),
                         quantity: document.get('quantity'),
-                        latitude: document.get('latitude'),
-                        longitude: document.get('longitude'),
+                        distance: getDistanceFromLatLonInKm(
+                          widget.user_lat,
+                          widget.user_long,
+                          document.get('latitude'),
+                          document.get('longitude'),
+                        ),
                         location: document.get('location'),
                       ),
                     ),
@@ -106,7 +108,8 @@ class _BodyState extends State<Body> {
       },
     );
   }
-  double? getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+
+  double getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
     var dLon = deg2rad(lon2 - lon1);

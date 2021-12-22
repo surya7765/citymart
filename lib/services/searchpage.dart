@@ -2,6 +2,10 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:citymart/views/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'dart:math' as Math;
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -11,6 +15,54 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  late Position _currentPosition = Position(
+    latitude: 0,
+    longitude: 0,
+    accuracy: 0,
+    altitude: 0,
+    speed: 0,
+    heading: 0,
+    speedAccuracy: 0,
+    timestamp: null,
+  );
+  String _currentAddress = "Enabling Location...";
+
+  void _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: "Make sure your location is enabled.");
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(msg: 'Location permissions are denied forever');
+    }
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+      Placemark place = placemarks[0];
+
+      setState(() {
+        _currentPosition = position;
+        _currentAddress =
+            "${place.locality}, ${place.administrativeArea}\n ${place.country}, ${place.postalCode}";
+      });
+    } catch (e) {
+      print(e);
+      Fluttertoast.showToast(msg: "No internet connection");
+    }
+  }
+
   TextEditingController _searchController = TextEditingController();
   CollectionReference _productsCollection =
       FirebaseFirestore.instance.collection('products');
@@ -18,6 +70,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    _determinePosition();
     return Scaffold(
       appBar: AppBar(
         title: Text("Search for product"),
@@ -96,8 +149,12 @@ class _SearchPageState extends State<SearchPage> {
                                         images3: data.get('images')[2],
                                         isAvailable: data.get('isAvailable'),
                                         quantity: data.get('quantity'),
-                                        latitude: data.get('latitude'),
-                                        longitude: data.get('longitude'),
+                                        distance: getDistanceFromLatLonInKm(
+                                          _currentPosition.latitude,
+                                          _currentPosition.longitude,
+                                          data.get('latitude'),
+                                          data.get('longitude'),
+                                        ),
                                         location: data.get('location'),
                                       ),
                                     ),
@@ -122,5 +179,23 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
     );
+  }
+
+  double getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2 - lat1); // deg2rad below
+    var dLon = deg2rad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) *
+            Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c; // Distance in km
+    return d;
+  }
+
+  double deg2rad(deg) {
+    return deg * (Math.pi / 180);
   }
 }
